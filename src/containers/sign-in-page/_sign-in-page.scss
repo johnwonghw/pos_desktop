@@ -1,0 +1,22 @@
+.sign-in-page-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	.business-logo {
+		min-width: 160px;
+		width: 30vw;
+		max-width: 240px;
+		padding-bottom: 2vw;
+	}
+	.sign-in-form {
+		min-width: 200px;
+		width: 30vw;
+		max-width: 400px;
+		.login-form-button {
+			display: block;
+			width: 100%;
+		}
+	}
+}
