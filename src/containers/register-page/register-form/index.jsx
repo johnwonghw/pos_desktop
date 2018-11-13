@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import _config from 'config';
 import { withFormik } from 'formik';
-import { withRouter } from 'react-router';
 
-import './_sign-in-form.scss'
+import './_register-form.scss'
 
 const FormItem = Form.Item;
-class SignInForm extends Component {
-  
+class RegisterForm extends Component {
+
   render() {
     let {
       actionLoading,
@@ -18,30 +17,30 @@ class SignInForm extends Component {
       handleChange,
       setFieldValue,
       handleBlur,
-      handleSubmit,  
+      handleSubmit,
     } = this.props;
 
     // const { getFieldDecorator } = this.props.form;
     return (
-      <div className="sign-in-form-container">
+      <div className="register-form-container">
 
-        <Form className="sign-in-form">
+        <Form className="register-form" onSubmit={handleSubmit}>
           <FormItem>
             <Input
-                placeholder={"Enter your email"}
-                value={values.email}
-                name="email"
-                onChange={handleChange}
-                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                suffix={values.email
-                  ? <Icon
-                    type="close-circle"
-                    style={{ color: 'rgba(0,0,0,.25)' }}
-                    onClick={(e) => {
-                      setFieldValue('email', '')
-                    }}
-                  /> : null}
-              />
+              placeholder={"Enter your email"}
+              value={values.email}
+              name="email"
+              onChange={handleChange}
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              suffix={values.email
+                ? <Icon
+                  type="close-circle"
+                  style={{ color: 'rgba(0,0,0,.25)' }}
+                  onClick={(e) => {
+                    setFieldValue('email', '')
+                  }}
+                /> : null}
+            />
           </FormItem>
           <FormItem>
             <Input
@@ -62,15 +61,9 @@ class SignInForm extends Component {
             />
           </FormItem>
           <FormItem>
-            <Checkbox>Remember me</Checkbox>
-            <Button type="primary" className="login-form-button">
-              Log in
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Register
             </Button>
-            <div 
-            className="sign-up-button"
-            onClick={() => {
-              this.props.history.push('/register')
-            }}>or Sign up here!</div>
           </FormItem>
         </Form>
       </div>
@@ -79,8 +72,11 @@ class SignInForm extends Component {
   }
 }
 
-const SignInFormik = withFormik({
+const RegisterFormik = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
-
-})(SignInForm)
-export default withRouter(SignInFormik);
+  handleSubmit: (values, {props}) => {
+    console.log(values, props)
+    props.registerUser(values)
+  },
+})(RegisterForm)
+export default RegisterFormik;

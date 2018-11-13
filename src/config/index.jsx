@@ -1,4 +1,4 @@
 import configQa from 'config/config-qa.json';
-import configApi from 'config/config-api.json';
+import configProd from 'config/config-prod.json';
 
-export default process.env.NODE_ENV !== 'development' ? configQa : configApi
+export default process.env.NODE_ENV !== 'development' ? configQa : configProd
