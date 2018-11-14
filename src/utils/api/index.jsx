@@ -1,4 +1,4 @@
-function call(url, method = 'GET', params) {
+function execute(url, method = 'GET', params) {
   let postBody = {};
   if (params) {
     postBody = params
@@ -12,15 +12,15 @@ function call(url, method = 'GET', params) {
     },
     body: JSON.stringify(postBody)
   }).then(res => {
-    console.log(res)
+    // console.log(res, res.body, res.json())
     return res.json()
   })
 }
 
-function callAuth(url, method, token, secret, params) {
+function executeAuth(url, method, token, secret, params) {
 
 }
 
 export default {
-  call
+  execute
 }

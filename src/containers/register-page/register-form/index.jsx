@@ -76,7 +76,7 @@ const RegisterFormik = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
   handleSubmit: (values, {props}) => {
     console.log(values, props)
-    props.registerUser(values)
+    props.register(values)
   },
 })(RegisterForm)
 export default RegisterFormik;

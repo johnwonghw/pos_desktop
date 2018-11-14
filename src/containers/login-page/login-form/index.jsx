@@ -4,10 +4,10 @@ import _config from 'config';
 import { withFormik } from 'formik';
 import { withRouter } from 'react-router';
 
-import './_sign-in-form.scss'
+import './_login-form.scss'
 
 const FormItem = Form.Item;
-class SignInForm extends Component {
+class LoginForm extends Component {
   
   render() {
     let {
@@ -23,9 +23,9 @@ class SignInForm extends Component {
 
     // const { getFieldDecorator } = this.props.form;
     return (
-      <div className="sign-in-form-container">
+      <div className="login-form-container">
 
-        <Form className="sign-in-form">
+        <Form className="login-form" onSubmit={handleSubmit}>
           <FormItem>
             <Input
                 placeholder={"Enter your email"}
@@ -63,11 +63,11 @@ class SignInForm extends Component {
           </FormItem>
           <FormItem>
             <Checkbox>Remember me</Checkbox>
-            <Button type="primary" className="login-form-button">
+            <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
             <div 
-            className="sign-up-button"
+            className="register-button"
             onClick={() => {
               this.props.history.push('/register')
             }}>or Sign up here!</div>
@@ -79,8 +79,11 @@ class SignInForm extends Component {
   }
 }
 
-const SignInFormik = withFormik({
+const LoginFormik = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
-
-})(SignInForm)
-export default withRouter(SignInFormik);
+  handleSubmit: (values, {props}) => {
+    console.log(values, props)
+    props.login(values)
+  },
+})(LoginForm)
+export default withRouter(LoginFormik);

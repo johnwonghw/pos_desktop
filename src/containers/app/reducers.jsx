@@ -1,5 +1,5 @@
-import SignInPageReducer from 'containers/sign-in-page/reducers'
+import LoginPageReducer from 'containers/login-page/reducers'
 
 export default {
-  ...SignInPageReducer
+  ...LoginPageReducer
 }

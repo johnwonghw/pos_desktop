@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-class HomePage extends Component {
+class DashboardPage extends Component {
   render() {
     return (
       <div>
@@ -29,5 +29,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-HomePage = connect(mapStateToProps, mapDispatchToProps)(HomePage)
-export default HomePage;
+DashboardPage = connect(mapStateToProps, mapDispatchToProps)(DashboardPage)
+export default DashboardPage;

@@ -8,12 +8,12 @@ import './_register-page.scss'
 class RegisterPage extends Component {
   render() {
     let {
-      registerUser
+      register
     } = this.props;
     return (
       <div className="register-page-container">
         <RegisterForm 
-          registerUser={registerUser}
+          register={register}
         />
       </div>
     );
@@ -25,17 +25,15 @@ const mapStateToProps = (state) => {
   
   return {
     actionLoading: signInState.actionLoading,
-    username: signInState.username,
-    password: signInState.password,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerUser: bindActionCreators((userInfo) => {
+    register: bindActionCreators((userInfo) => {
       let { email, password } = userInfo;
       return {
-        type: "REGISTER_PAGE__REGISTER_USER",
+        type: "REGISTER_PAGE__REGISTER",
         payload: {
           email,
           password
